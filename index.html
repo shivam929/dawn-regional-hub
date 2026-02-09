@@ -1126,10 +1126,9 @@
             await loadEvents(regionId);
             
             // Check if user is moderator for this region
-            const canModerate = currentUser && (
-                userRole === 'super_admin' || 
-                (userRole === 'moderator' && userRegion === regionId)
-            );
+            const canModerate =
+    userRole === 'super_admin' ||
+    (userRole === 'moderator' && userRegion === currentRegionId);
             
             document.getElementById('adminControls').style.display = canModerate ? 'block' : 'none';
             
@@ -1366,10 +1365,10 @@
 
             // Refresh current modal if open
             if (currentRegionId && document.getElementById('regionModal').classList.contains('active')) {
-                const canModerate = currentUser && (
-                    userRole === 'super_admin' || 
-                    (userRole === 'moderator' && userRegion === currentRegionId)
-                );
+                const canModerate =
+    userRole === 'super_admin' ||
+    (userRole === 'moderator' && userRegion === regionId);
+                
                 document.getElementById('adminControls').style.display = canModerate ? 'block' : 'none';
                 renderEvents(events);
             }

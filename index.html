@@ -918,9 +918,9 @@
             </div>
             <div class="modal-body">
                 <div class="auth-tabs">
-                    <button class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
-                    <button class="auth-tab" onclick="switchAuthTab('register')">Create Account</button>
-                </div>
+    <button class="auth-tab active" onclick="switchAuthTab('login', event)">Sign In</button>
+    <button class="auth-tab" onclick="switchAuthTab('register', event)">Create Account</button>
+</div>
                 
                 <div id="loginTab" class="tab-content active">
                     <form onsubmit="handleLogin(event)">
@@ -1171,7 +1171,7 @@
 
             const canModerate =
     userRole === 'super_admin' ||
-    (userRole === 'moderator' && userRegion === regionId);
+    (userRole === 'moderator' && userRegion === currentRegionId);
 
             list.innerHTML = eventsToRender.map((event, index) => `
                 <div class="event-item ${index === 0 ? 'latest' : ''}">
@@ -1422,13 +1422,13 @@
             }
         }
 
-        function switchAuthTab(tab) {
-            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            
-            event.target.classList.add('active');
-            document.getElementById(tab + 'Tab').classList.add('active');
-        }
+        function switchAuthTab(tab, e) {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    
+    e.target.classList.add('active');
+    document.getElementById(tab + 'Tab').classList.add('active');
+}
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
@@ -1498,4 +1498,5 @@
 </body>
 
 </html>
+
 

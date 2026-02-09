@@ -1170,10 +1170,9 @@
                 return;
             }
 
-            const canModerate = currentUser && (
-                userRole === 'super_admin' || 
-                (userRole === 'moderator' && userRegion === currentRegionId)
-            );
+            const canModerate =
+    userRole === 'super_admin' ||
+    (userRole === 'moderator' && userRegion === regionId);
 
             list.innerHTML = eventsToRender.map((event, index) => `
                 <div class="event-item ${index === 0 ? 'latest' : ''}">
@@ -1498,4 +1497,5 @@
         });
     </script>
 </body>
+
 </html>

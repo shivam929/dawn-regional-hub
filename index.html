@@ -1367,7 +1367,7 @@
             if (currentRegionId && document.getElementById('regionModal').classList.contains('active')) {
                 const canModerate =
     userRole === 'super_admin' ||
-    (userRole === 'moderator' && userRegion === regionId);
+    (userRole === 'moderator' && userRegion === currentRegionId);
                 
                 document.getElementById('adminControls').style.display = canModerate ? 'block' : 'none';
                 renderEvents(events);
@@ -1498,3 +1498,4 @@
 </body>
 
 </html>
+
